@@ -1,44 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
-        header { background: #007bff; color: white; padding: 40px 20px; text-align: center; }
-        nav { background: #333; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        nav a:hover { text-decoration: underline; }
-        section { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .abstract { border-left: 5px solid #007bff; padding-left: 15px; font-style: italic; }
-        ul { list-style-type: disc; padding-left: 20px; }
-        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow: auto; }
-        footer { text-align: center; padding: 20px; background: #333; color: white; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: rgba(255,255,255,0.95);
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(15, 23, 42, 0.10);
+
+      /* Accent palette (clean + “medical/academic”) */
+      --accent: #2dd4bf;     /* teal */
+      --accent2: #60a5fa;    /* blue */
+      --accent3: #a78bfa;    /* violet */
+
+      --shadow: 0 12px 40px rgba(2, 6, 23, 0.12);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: #f6f8fb;
+      line-height: 1.6;
+    }
+
+    /* ---------- Hero ---------- */
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 20px 26px;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(45,212,191,0.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 20%, rgba(96,165,250,0.22), transparent 55%),
+        radial-gradient(900px 600px at 60% 110%, rgba(167,139,250,0.18), transparent 60%),
+        linear-gradient(180deg, #0b1220 0%, #0b1220 55%, #0f172a 100%);
+      color: white;
+    }
+
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .subtitle {
+      margin: 0 auto 18px;
+      max-width: 900px;
+      color: rgba(255,255,255,0.82);
+      font-size: 1.02rem;
+    }
+
+    /* Authors + affiliations */
+    .authors {
+      margin: 14px auto 6px;
+      max-width: 980px;
+      color: rgba(255,255,255,0.92);
+      font-size: 0.98rem;
+    }
+    .authors a { color: rgba(255,255,255,0.92); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.35); }
+    .authors a:hover { border-bottom-color: rgba(255,255,255,0.75); }
+
+    .affils {
+      margin: 8px auto 0;
+      max-width: 980px;
+      color: rgba(255,255,255,0.80);
+      font-size: 0.95rem;
+    }
+    .affils span {
+      display: inline-block;
+      margin: 2px 10px;
+      white-space: nowrap;
+    }
+
+    .notes {
+      margin-top: 8px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.92rem;
+    }
+
+    /* Buttons */
+    .btn-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      backdrop-filter: blur(10px);
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .btn.primary {
+      border: none;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 55%, var(--accent3) 100%);
+      color: #07121f;
+    }
+    .btn.primary:hover { transform: translateY(-1px); }
+
+    /* Paper placeholder looks intentional */
+    .btn.disabled {
+      pointer-events: none;
+      opacity: 0.75;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ---------- Nav ---------- */
+    nav.topnav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15,23,42,0.08);
+    }
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 10px 14px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 6px 10px;
+      border-radius: 10px;
+      transition: background 120ms ease;
+    }
+    nav a:hover { background: rgba(15,23,42,0.06); }
+
+    /* ---------- Sections ---------- */
+    section {
+      max-width: 980px;
+      margin: 20px auto;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    section h2 {
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .abstract-box {
+      position: relative;
+      padding: 16px 16px 16px 18px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(45,212,191,0.08), rgba(96,165,250,0.06));
+      border: 1px solid rgba(45,212,191,0.22);
+      color: #0f172a;
+    }
+    .abstract-box:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      bottom: 14px;
+      width: 4px;
+      border-radius: 6px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+    }
+
+    .muted { color: var(--muted); }
+
+    @media (max-width: 520px) {
+      .affils span { display: block; margin: 4px 0; }
+      section { margin: 14px 10px; padding: 18px; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</h1>
-        <p>Eric Onyame<sup>*</sup> (University of Virginia), Akash Ghosh<sup>*</sup> (IIT-Patna), Subhadip Baidya (IIT-Patna), Sriparna Saha (IIT-Patna), Xiuying Chen (MBZUAI), Chirag Agarwal (University of Virginia)</p>
-        <p><sup>*</sup>Equal Contribution</p>
-    </header>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</h1>
 
-    <nav>
-        <a href="#abstract">Abstract</a>
-        <a href="#contributions">Contributions</a>
-        <a href="#methods">Methods</a>
-        <a href="#results">Results</a>
-        <a href="#resources">Resources</a>
-        <a href="#citation">Citation</a>
-    </nav>
+      <p class="subtitle">
+        A curriculum-guided RL framework (code-switching-aware SFT + GRPO) for reliable multilingual medical reasoning.
+      </p>
 
-    <section id="abstract">
-        <h2>Abstract</h2>
-        <div class="abstract">
-            While large language models (LLMs) have shown to perform well on monolingual mathematical and commonsense reasoning, they remain unreliable for multilingual medical reasoning applications, hindering their deployment in multilingual healthcare settings. We address this by first introducing CUREMED-BENCH, a high-quality multilingual medical reasoning dataset with open-ended reasoning queries with a single verifiable answer, spanning thirteen languages, including underrepresented languages such as Amharic, Yoruba, and Swahili. Building on this dataset, we propose CURE-MED, a curriculum-informed reinforcement learning framework that integrates code-switching-aware supervised fine-tuning and Group Relative Policy Optimization to jointly improve logical correctness and language stability. Across thirteen languages, our approach consistently outperforms strong baselines and scales effectively, achieving 85.21% language consistency and 54.35% logical correctness at 7B parameters, and 94.96% language consistency and 70.04% logical correctness at 32B parameters. These results support reliable and equitable multilingual medical reasoning in LLMs. The code and dataset will be made publicly available upon acceptance.
-        </div>
-    </section>
+      <div class="authors">
+        Eric Onyame<sup>1*</sup>, Akash Ghosh<sup>2*</sup>, Subhadip Baidya<sup>2</sup>, Sriparna Saha<sup>2</sup>,
+        Xiuying Chen<sup>3</sup>, Chirag Agarwal<sup>1</sup>
+      </div>
+
+      <div class="affils">
+        <span><sup>1</sup>University of Virginia</span>
+        <span><sup>2</sup>IIT Patna</span>
+        <span><sup>3</sup>MBZUAI</span>
+      </div>
+
+      <div class="notes"><sup>*</sup>Equal contribution</div>
+
+      <div class="btn-row">
+        <!-- Placeholder: update href later to the arXiv link -->
+        <a class="btn primary disabled" href="#" aria-disabled="true" title="Update with arXiv link after submission">
+          Paper (arXiv soon)
+        </a>
+
+        <a class="btn" href="https://github.com/AikyamLab/cure-med" target="_blank" rel="noopener">
+          Code (GitHub)
+        </a>
+
+        <a class="btn" href="https://huggingface.co/datasets/Aikyam-Lab/CUREMED-BENCH" target="_blank" rel="noopener">
+          Dataset (Hugging Face)
+        </a>
+
+        <!-- Optional: keep if you will add citation section later -->
+        <a class="btn" href="#citation">BibTeX</a>
+
 
     <section id="contributions">
         <h2>Contributions</h2>
