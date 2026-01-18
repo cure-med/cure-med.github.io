@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
+        header { background: #007bff; color: white; padding: 40px 20px; text-align: center; }
+        nav { background: #333; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        section { max-width: 900px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .abstract { border-left: 5px solid #007bff; padding-left: 15px; font-style: italic; }
+        ul { list-style-type: disc; padding-left: 20px; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 4px; overflow: auto; }
+        footer { text-align: center; padding: 20px; background: #333; color: white; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</h1>
+        <p>Eric Onyame<sup>*</sup> (University of Virginia), Akash Ghosh<sup>*</sup> (IIT-Patna), Subhadip Baidya (IIT-Patna), Sriparna Saha (IIT-Patna), Xiuying Chen (MBZUAI), Chirag Agarwal (University of Virginia)</p>
+        <p><sup>*</sup>Equal Contribution</p>
+    </header>
+
+    <nav>
+        <a href="#abstract">Abstract</a>
+        <a href="#contributions">Contributions</a>
+        <a href="#methods">Methods</a>
+        <a href="#results">Results</a>
+        <a href="#resources">Resources</a>
+        <a href="#citation">Citation</a>
+    </nav>
+
+    <section id="abstract">
+        <h2>Abstract</h2>
+        <div class="abstract">
+            While large language models (LLMs) have shown to perform well on monolingual mathematical and commonsense reasoning, they remain unreliable for multilingual medical reasoning applications, hindering their deployment in multilingual healthcare settings. We address this by first introducing CUREMED-BENCH, a high-quality multilingual medical reasoning dataset with open-ended reasoning queries with a single verifiable answer, spanning thirteen languages, including underrepresented languages such as Amharic, Yoruba, and Swahili. Building on this dataset, we propose CURE-MED, a curriculum-informed reinforcement learning framework that integrates code-switching-aware supervised fine-tuning and Group Relative Policy Optimization to jointly improve logical correctness and language stability. Across thirteen languages, our approach consistently outperforms strong baselines and scales effectively, achieving 85.21% language consistency and 54.35% logical correctness at 7B parameters, and 94.96% language consistency and 70.04% logical correctness at 32B parameters. These results support reliable and equitable multilingual medical reasoning in LLMs. The code and dataset will be made publicly available upon acceptance.
+        </div>
+    </section>
+
+    <section id="contributions">
+        <h2>Contributions</h2>
+        <ul>
+            <li>We present a systematic evaluation of multilingual medical reasoning of LLMs using verifiable medical queries, enabling reliable measurement of logical accuracy and language consistency across languages.</li>
+            <li>We introduce CUREMED-BENCH, a large-scale multilingual medical reasoning dataset spanning 13 languages across high-, mid-, and low-resource settings.</li>
+            <li>We propose CURE-MED, a two-stage training framework for multilingual medical reasoning that combines code-switching-aware SFT with curriculum-informed reinforcement learning (RL) to jointly optimize logical correctness and linguistic fidelity.</li>
+            <li>Through extensive automatic and human evaluations, we show that CURE-MED achieves state-of-the-art performance on CUREMED-BENCH and demonstrates improved out-of-distribution generalization, including improved robustness in low-resource languages and stronger performance on unseen medical questions and languages.</li>
+        </ul>
+    </section>
+
+    <section id="methods">
+        <h2>Methods</h2>
+        <p>CURE-MED applies code-switching-aware supervised fine-tuning (SFT) to stabilize language usage during intermediate reasoning steps and performs curriculum-informed GRPO to improve logical correctness and language fidelity. The framework uses the Qwen2.5-Instruct backbone and focuses on transfer from high-resource to low-resource languages for equitable performance.</p>
+    </section>
+
+    <section id="results">
+        <h2>Results</h2>
+        <p>Our approach outperforms baselines across 13 languages, with key metrics including 85.21% language consistency and 54.35% logical correctness at 7B parameters. At 32B, it reaches 94.96% consistency and 70.04% correctness. Improved generalization in low-resource settings (e.g., Amharic, Swahili) demonstrates robustness for real-world clinical use.</p>
+    </section>
+
+    <section id="resources">
+        <h2>Resources</h2>
+        <ul>
+            <li><a href="cure-med-paper.pdf">Full Paper (PDF)</a> (arXiv link coming soon)</li>
+            <li><a href="data.zip">CUREMED-BENCH Dataset (ZIP)</a></li>
+            <li>Code: Coming soon upon acceptance (link to AikyamaLab repo if public).</li>
+        </ul>
+    </section>
+
+    <section id="citation">
+        <h2>Citation</h2>
+        <pre>
+@article{onyame2026curemed,
+  title={CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning},
+  author={Onyame, Eric and Ghosh, Akash and Baidya, Subhadip and Saha, Sriparna and Chen, Xiuying and Agarwal, Chirag},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2026}
+}
+        </pre>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 CURE-Med Team | Hosted on GitHub Pages | Contact: eon4a@virginia.edu</p>
+    </footer>
+</body>
+</html>
