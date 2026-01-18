@@ -250,9 +250,40 @@
 
         <!-- Optional: keep if you will add citation section later -->
         <a class="btn" href="#citation">BibTeX</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <a href="#abstract">Abstract</a>
+      <a href="#contributions">Contributions</a>
+      <a href="#methods">Methods</a>
+      <a href="#results">Results</a>
+      <a href="#resources">Resources</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </nav>
+
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <div class="abstract-box">
+      While large language models (LLMs) have shown to perform well on monolingual mathematical and commonsense reasoning,
+      they remain unreliable for multilingual medical reasoning applications, hindering their deployment in multilingual
+      healthcare settings. We address this by first introducing CUREMED-BENCH, a high-quality multilingual medical reasoning
+      dataset with open-ended reasoning queries with a single verifiable answer, spanning thirteen languages, including
+      underrepresented languages such as Amharic, Yoruba, and Swahili. Building on this dataset, we propose CURE-MED, a
+      curriculum-informed reinforcement learning framework that integrates code-switching-aware supervised fine-tuning and
+      Group Relative Policy Optimization to jointly improve logical correctness and language stability. Across thirteen
+      languages, our approach consistently outperforms strong baselines and scales effectively, achieving 85.21% language
+      consistency and 54.35% logical correctness at 7B parameters, and 94.96% language consistency and 70.04% logical
+      correctness at 32B parameters. These results support reliable and equitable multilingual medical reasoning in LLMs.
+      <span class="muted">Paper link will be updated after arXiv submission.</span>
+    </div>
+  </section>
 
 
-    <section id="contributions">
+    <!-- <section id="contributions">
         <h2>Contributions</h2>
         <ul>
             <li>We present a systematic evaluation of multilingual medical reasoning of LLMs using verifiable medical queries, enabling reliable measurement of logical accuracy and language consistency across languages.</li>
@@ -297,4 +328,4 @@
         <p>&copy; 2026 CURE-Med Team | Hosted on GitHub Pages | Contact: eon4a@virginia.edu</p>
     </footer>
 </body>
-</html>
+</html> -->
