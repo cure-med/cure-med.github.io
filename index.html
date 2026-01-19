@@ -927,54 +927,16 @@
   <div class="results-head">
     <h2>Results</h2>
     <p>
-      CURE-Med delivers strong gains on <b>CUREMED-BENCH</b> and also transfers to <b>other multilingual medical benchmarks</b>,
-      outperforming strong medical-domain LLM baselines. Use the interactive panels below, then inspect the figures.
+      CURE-Med improves <b>language consistency</b> and <b>logical accuracy</b> across model sizes.
+      Select a model size to see our numbers and the <b>gain vs base</b>, then inspect the figures.
     </p>
   </div>
 
-  <!-- Research Questions (short + punchy) -->
-  <div class="rq-grid">
-    <div class="rq-card">
-      <span class="rq-tag">RQ1</span>
-      <div class="rq-text">
-        <b>Does CURE-Med improve multilingual medical reasoning?</b><br/>
-        Yes — it improves both <b>logical accuracy</b> and <b>language consistency</b> across model sizes.
-      </div>
-    </div>
-
-    <div class="rq-card">
-      <span class="rq-tag">RQ2</span>
-      <div class="rq-text">
-        <b>Is there a consistency–accuracy trade-off?</b><br/>
-        CURE-Med shifts models toward the <b>upper-right</b>, improving both metrics together.
-      </div>
-    </div>
-
-    <div class="rq-card">
-      <span class="rq-tag">RQ3</span>
-      <div class="rq-text">
-        <b>How does it scale?</b><br/>
-        Gains grow smoothly from <b>1.5B → 32B</b>, staying above the base model on both metrics.
-      </div>
-    </div>
-
-    <div class="rq-card">
-      <span class="rq-tag">RQ4</span>
-      <div class="rq-text">
-        <b>Does it generalize OOD?</b><br/>
-        Yes — strong transfer to other benchmarks and competitive performance against strong medical LLMs.
-      </div>
-    </div>
-  </div>
-
-  <!-- Interactive panels: In-domain + OOD -->
-  <div class="results-panels">
-    <!-- In-domain interactive -->
+  <!-- ONE CARD ONLY -->
+  <div class="results-panels" style="grid-template-columns: 1fr;">
     <div class="panel">
-      <h3>In-domain (CUREMED-BENCH): interactive summary</h3>
-      <div class="sub">
-        Select a model size to view our performance and the <b>gain vs base</b>.
-      </div>
+      <h3>Results at a glance</h3>
+      <div class="sub">Pick a size (our model vs base instruction model).</div>
 
       <div class="size-row" aria-label="Select model size (in-domain)">
         <button class="size-btn active" data-size="1.5B" type="button">1.5B</button>
@@ -999,72 +961,29 @@
       </div>
 
       <div class="ood-box" style="margin-top:12px;">
-        <b>Two-line takeaway:</b><br/>
-        CURE-Med improves medical correctness while keeping the final answer in the user’s language.
-        The joint gains become stronger as model size increases.
-      </div>
-    </div>
-
-    <!-- OOD quick view (interactive) -->
-    <div class="panel">
-      <h3>OOD transfer: quick view</h3>
-      <div class="sub">
-        A compact snapshot showing generalization beyond CUREMED-BENCH.
-      </div>
-
-      <div class="size-row" aria-label="Select OOD snapshot">
-        <button class="size-btn active" data-ood="best32" type="button">Best (32B)</button>
-        <button class="size-btn" data-ood="small15" type="button">Small (1.5B)</button>
-      </div>
-
-      <div class="ood-box" id="oodText">
-        <b>32B snapshot:</b> Best on <b>CUREMED-BENCH</b> (<b>70.04%</b>) and strong transfer to <b>MMed-Bench</b> (<b>79.57%</b>),
-        while remaining competitive on other medical QA benchmarks.
-      </div>
-
-      <div class="ood-metric" id="oodChips">
-        <div class="ood-chip">CUREMED-BENCH: <span>70.04%</span></div>
-        <div class="ood-chip">MMed-Bench: <span>79.57%</span></div>
-      </div>
-
-      <div class="sub" style="margin-top:10px;">
-        Below: benchmark comparison plot (click to zoom).
+        <b>Takeaway:</b> CURE-Med improves medical reasoning while keeping the final answer in the user’s language —
+        and the gains strengthen with scale.
       </div>
     </div>
   </div>
 
-  <!-- Plot: Benchmark comparison (your new image) -->
-  <figure class="figure-wide">
-    <img class="zoomable"
-         src="images/table7_grouped_bar.png"
-         alt="Benchmark comparison: CURE-Med vs medical LLM baselines across benchmarks." />
-    <figcaption>
-      <b>OOD benchmark comparison:</b> CURE-Med remains strong across diverse evaluation settings, and our larger models
-      are competitive with (and often outperform) strong medical-domain LLM baselines on multiple benchmarks.
-      <span class="muted">Click to zoom.</span>
-    </figcaption>
-  </figure>
-
-  <!-- Plot: Trade-off -->
+  <!-- PLOTS UNDER IT -->
   <figure class="figure-wide">
     <img class="zoomable"
          src="images/bubble_plot_final.png"
-         alt="Trade-off bubble plot: CURE-Med shifts toward upper-right compared to baselines." />
+         alt="Trade-off plot: CURE-Med shifts toward upper-right compared to baselines." />
     <figcaption>
-      <b>Trade-off (Consistency vs. Accuracy):</b> CURE-Med consistently moves toward the <b>upper-right</b>,
-      improving both language fidelity and medical reasoning compared to baseline families.
+      <b>Trade-off:</b> CURE-Med moves models toward the <b>upper-right</b>, improving both consistency and accuracy.
       <span class="muted">Click to zoom.</span>
     </figcaption>
   </figure>
 
-  <!-- Plot: Scaling -->
   <figure class="figure-wide">
     <img class="zoomable"
          src="images/scaling_plots_with_shaded_bands.png"
-         alt="Scaling plot: CURE-Med vs base across model sizes for consistency and accuracy." />
+         alt="Scaling: CURE-Med vs base across sizes for consistency and accuracy." />
     <figcaption>
-      <b>Scaling (1.5B → 32B):</b> CURE-Med stays above the base model on both metrics, showing stable gains as scale increases
-      and supporting the effectiveness of curriculum-guided reinforcement learning.
+      <b>Scaling:</b> Gains remain stable from <b>1.5B → 32B</b>, staying above the base model on both metrics.
       <span class="muted">Click to zoom.</span>
     </figcaption>
   </figure>
@@ -1073,7 +992,7 @@
 <!-- Lightbox (zoom) -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <div class="lightbox-inner">
-    <img id="lightboxImg" alt="Zoomed plot" />
+    <img id="lightboxImg" alt="Zoomed figure" />
   </div>
 </div>
 
@@ -1142,10 +1061,7 @@
   typeLoop();
 </script>
 
-    <script>
-  // -----------------------
-  // In-domain interactive data (CUREMED-BENCH)
-  // -----------------------
+ <script>
   const resultsData = {
     "1.5B": { ours: { cons: 57.60, acc: 28.32 }, base: { cons: 4.00,  acc: 6.30 } },
     "3B":   { ours: { cons: 74.28, acc: 42.93 }, base: { cons: 10.80, acc: 8.20 } },
@@ -1160,7 +1076,7 @@
   const accGain  = document.getElementById("accGain");
   const sizeBtns = Array.from(document.querySelectorAll(".size-btn[data-size]"));
 
-  function animateNumber(el, from, to, decimals = 2, duration = 260){
+  function animateNumber(el, from, to, decimals = 2, duration = 240){
     const start = performance.now();
     function frame(t){
       const p = Math.min((t - start) / duration, 1);
@@ -1186,44 +1102,7 @@
 
   sizeBtns.forEach(b => b.addEventListener("click", () => setSize(b.dataset.size)));
 
-  // -----------------------
-  // OOD quick view toggle (compact, truthful)
-  // -----------------------
-  const oodBtns = Array.from(document.querySelectorAll(".size-btn[data-ood]"));
-  const oodText = document.getElementById("oodText");
-  const oodChips = document.getElementById("oodChips");
-
-  const oodViews = {
-    best32: {
-      text: `<b>32B snapshot:</b> Best on <b>CUREMED-BENCH</b> (<b>70.04%</b>) and strong transfer to <b>MMed-Bench</b> (<b>79.57%</b>),
-             while remaining competitive on other medical QA benchmarks.`,
-      chips: [
-        `CUREMED-BENCH: <span>70.04%</span>`,
-        `MMed-Bench: <span>79.57%</span>`
-      ]
-    },
-    small15: {
-      text: `<b>1.5B snapshot (OOD example):</b> Even small models show large transfer gains under limited capacity on OOD settings
-             (see paper tables for full breakdown).`,
-      chips: [
-        `Example gain: <span>large jump</span>`,
-        `Low-capacity transfer: <span>supported</span>`
-      ]
-    }
-  };
-
-  function setOOD(key){
-    const v = oodViews[key];
-    oodText.innerHTML = v.text;
-    oodChips.innerHTML = v.chips.map(c => `<div class="ood-chip">${c}</div>`).join("");
-    oodBtns.forEach(b => b.classList.toggle("active", b.dataset.ood === key));
-  }
-
-  oodBtns.forEach(b => b.addEventListener("click", () => setOOD(b.dataset.ood)));
-
-  // -----------------------
-  // Lightbox zoom for figures
-  // -----------------------
+  // Lightbox zoom
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
 
@@ -1243,7 +1122,6 @@
 
   // Init
   setSize("1.5B");
-  setOOD("best32");
 </script>
 
 
