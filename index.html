@@ -441,7 +441,7 @@
 
 
    /* =========================
-   RESULTS (light, plot-first)
+   RESULTS v2 (interactive + OOD)
    ========================= */
 
     .results-lite{
@@ -458,7 +458,7 @@
       position: relative;
       border-radius: 16px;
       padding: 16px 16px 14px;
-      background: linear-gradient(135deg, rgba(45,212,191,0.16), rgba(96,165,250,0.10));
+      background: linear-gradient(135deg, rgba(45,212,191,0.14), rgba(96,165,250,0.10));
       border: 1px solid rgba(45,212,191,0.18);
     }
     
@@ -473,122 +473,150 @@
       background: linear-gradient(90deg, rgba(45,212,191,0.95), rgba(96,165,250,0.85), rgba(167,139,250,0.70));
     }
     
-    .results-head h2{
-      margin: 10px 0 6px;
-    }
+    .results-head h2{ margin: 10px 0 6px; }
+    .results-head p{ margin: 0; color: var(--muted); line-height: 1.55; }
     
-    .results-head p{
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
+    /* RQ cards */
+    .rq-grid{
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
     }
+    @media (min-width: 860px){
+      .rq-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    .rq-card{
+      border: 1px solid rgba(15,23,42,0.10);
+      background: rgba(248,250,252,0.92);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .rq-tag{
+      display: inline-block;
+      font-weight: 950;
+      font-size: 0.86rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(96,165,250,0.25);
+      background: linear-gradient(135deg, rgba(96,165,250,0.12), rgba(45,212,191,0.10));
+    }
+    .rq-text{
+      margin-top: 8px;
+      color: #0f172a;
+      line-height: 1.45;
+    }
+    .rq-text b{ font-weight: 950; }
     
-    /* Compact interactive summary row */
-    .results-summary{
+    /* Interactive panels row */
+    .results-panels{
       margin-top: 14px;
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
     }
-    
     @media (min-width: 900px){
-      .results-summary{
-        grid-template-columns: 1.15fr 0.85fr;
-        align-items: start;
-      }
+      .results-panels{ grid-template-columns: 1.15fr 0.85fr; }
     }
     
-    .summary-card{
+    .panel{
       border: 1px solid rgba(15,23,42,0.10);
       background: rgba(248,250,252,0.92);
       border-radius: 16px;
       padding: 14px;
     }
     
+    .panel h3{
+      margin: 0;
+      font-size: 1.05rem;
+    }
+    .panel .sub{
+      margin-top: 6px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    
+    /* Buttons */
     .size-row{
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 10px;
     }
-    
     .size-btn{
       border: 1px solid rgba(15,23,42,0.14);
       background: #fff;
       color: #0f172a;
-      font-weight: 900;
+      font-weight: 950;
       padding: 8px 10px;
       border-radius: 999px;
       cursor: pointer;
     }
-    
     .size-btn.active{
       border-color: rgba(45,212,191,0.55);
       background: linear-gradient(135deg, rgba(45,212,191,0.18), rgba(96,165,250,0.10));
     }
     
+    /* Stats */
     .stat-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
       margin-top: 12px;
     }
-    
     @media (min-width: 520px){
       .stat-grid{ grid-template-columns: 1fr 1fr; }
     }
-    
     .stat-box{
       border: 1px solid rgba(15,23,42,0.10);
       background: #fff;
       border-radius: 14px;
       padding: 12px;
     }
+    .stat-label{ font-weight: 950; color: #0f172a; font-size: 0.92rem; }
+    .stat-value{ font-weight: 1000; font-size: 1.55rem; letter-spacing: -0.02em; margin-top: 4px; }
+    .stat-sub{ color: var(--muted); margin-top: 6px; font-size: 0.92rem; }
     
-    .stat-label{ font-weight: 900; color: #0f172a; font-size: 0.92rem; }
-    .stat-value{ font-weight: 950; font-size: 1.55rem; letter-spacing: -0.02em; margin-top: 4px; }
-    .stat-sub{ color: var(--muted); margin-top: 4px; font-size: 0.92rem; }
-    
-    /* Highlight takeaway box */
-    .takeaway{
-      margin-top: 12px;
-      border-radius: 14px;
-      padding: 12px;
-      border: 1px solid rgba(96,165,250,0.18);
-      background: linear-gradient(135deg, rgba(96,165,250,0.10), rgba(45,212,191,0.08));
+    /* Make "Gain vs base" pop */
+    .gain-pill{
+      display: inline-block;
+      margin-top: 6px;
+      font-weight: 1000;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(45,212,191,0.30);
+      background: linear-gradient(135deg, rgba(45,212,191,0.16), rgba(96,165,250,0.10));
       color: #0f172a;
     }
     
-    /* Small highlighted table */
-    .mini-table{
-      width: 100%;
-      border-collapse: collapse;
+    /* OOD highlight box */
+    .ood-box{
       margin-top: 10px;
-      overflow: hidden;
       border-radius: 14px;
-      border: 1px solid rgba(15,23,42,0.10);
+      padding: 12px;
+      border: 1px solid rgba(167,139,250,0.22);
+      background: linear-gradient(135deg, rgba(167,139,250,0.10), rgba(96,165,250,0.08));
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    .ood-metric{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .ood-chip{
       background: #fff;
-    }
-    
-    .mini-table th, .mini-table td{
-      padding: 10px 10px;
-      border-bottom: 1px solid rgba(15,23,42,0.08);
-      text-align: left;
-      font-size: 0.95rem;
-    }
-    
-    .mini-table th{
-      background: rgba(248,250,252,0.92);
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: 999px;
+      padding: 8px 10px;
       font-weight: 950;
     }
-    
-    .mini-table tr:last-child td{ border-bottom: none; }
-    
-    .row-ours{
-      background: linear-gradient(90deg, rgba(45,212,191,0.12), rgba(96,165,250,0.08));
+    .ood-chip span{
+      font-weight: 1000;
     }
     
-    /* Full-width figure cards (like teaser) */
+    /* Figures: full width cards */
     .figure-wide{
       margin-top: 14px;
       padding: 14px;
@@ -597,7 +625,6 @@
       border: 1px solid rgba(15,23,42,0.10);
       box-shadow: 0 12px 34px rgba(2,6,23,0.08);
     }
-    
     .figure-wide img{
       width: 100%;
       height: auto;
@@ -605,8 +632,8 @@
       border-radius: 14px;
       border: 1px solid rgba(15,23,42,0.10);
       background: #fff;
+      cursor: zoom-in;
     }
-    
     .figure-wide figcaption{
       margin-top: 10px;
       color: var(--muted);
@@ -614,7 +641,7 @@
       font-size: 0.95rem;
     }
     
-    /* Lightbox (zoom) */
+    /* Lightbox zoom */
     .lightbox{
       position: fixed;
       inset: 0;
@@ -624,26 +651,22 @@
       z-index: 999;
       padding: 18px;
     }
-    
     .lightbox.open{ display: grid; }
-    
     .lightbox-inner{
       max-width: min(1200px, 96vw);
       max-height: 90vh;
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.20);
-      background: #ffffff;
+      background: #ffffff; /* important */
       box-shadow: 0 18px 60px rgba(0,0,0,0.45);
     }
-    
     .lightbox-inner img{
       width: 100%;
       height: auto;
       display: block;
-      background: #ffffff;
+      background: #ffffff; /* important */
     }
-
 
 
 
@@ -904,20 +927,56 @@
   <div class="results-head">
     <h2>Results</h2>
     <p>
-      CURE-Med improves <b>language consistency</b> and <b>logical accuracy</b> across model sizes.
-      Use the selector to explore the gains, then inspect the plots below.
+      CURE-Med delivers strong gains on <b>CUREMED-BENCH</b> and also transfers to <b>other multilingual medical benchmarks</b>,
+      outperforming strong medical-domain LLM baselines. Use the interactive panels below, then inspect the figures.
     </p>
   </div>
 
-  <!-- Compact interactive summary + highlighted table -->
-  <div class="results-summary">
-    <div class="summary-card">
-      <div style="font-weight:950; font-size:1.05rem;">Results at a glance</div>
-      <div style="color:var(--muted); margin-top:6px;">
-        Pick a model size to view performance and improvements over the base instruction model.
+  <!-- Research Questions (short + punchy) -->
+  <div class="rq-grid">
+    <div class="rq-card">
+      <span class="rq-tag">RQ1</span>
+      <div class="rq-text">
+        <b>Does CURE-Med improve multilingual medical reasoning?</b><br/>
+        Yes — it improves both <b>logical accuracy</b> and <b>language consistency</b> across model sizes.
+      </div>
+    </div>
+
+    <div class="rq-card">
+      <span class="rq-tag">RQ2</span>
+      <div class="rq-text">
+        <b>Is there a consistency–accuracy trade-off?</b><br/>
+        CURE-Med shifts models toward the <b>upper-right</b>, improving both metrics together.
+      </div>
+    </div>
+
+    <div class="rq-card">
+      <span class="rq-tag">RQ3</span>
+      <div class="rq-text">
+        <b>How does it scale?</b><br/>
+        Gains grow smoothly from <b>1.5B → 32B</b>, staying above the base model on both metrics.
+      </div>
+    </div>
+
+    <div class="rq-card">
+      <span class="rq-tag">RQ4</span>
+      <div class="rq-text">
+        <b>Does it generalize OOD?</b><br/>
+        Yes — strong transfer to other benchmarks and competitive performance against strong medical LLMs.
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive panels: In-domain + OOD -->
+  <div class="results-panels">
+    <!-- In-domain interactive -->
+    <div class="panel">
+      <h3>In-domain (CUREMED-BENCH): interactive summary</h3>
+      <div class="sub">
+        Select a model size to view our performance and the <b>gain vs base</b>.
       </div>
 
-      <div class="size-row" aria-label="Select model size">
+      <div class="size-row" aria-label="Select model size (in-domain)">
         <button class="size-btn active" data-size="1.5B" type="button">1.5B</button>
         <button class="size-btn" data-size="3B" type="button">3B</button>
         <button class="size-btn" data-size="7B" type="button">7B</button>
@@ -929,91 +988,95 @@
         <div class="stat-box">
           <div class="stat-label">Language Consistency</div>
           <div class="stat-value"><span id="consVal">57.60</span>%</div>
-          <div class="stat-sub">Gain vs base: <b>+<span id="consGain">53.60</span> pts</b></div>
+          <div class="gain-pill">Gain vs base: +<span id="consGain">53.60</span> pts</div>
         </div>
 
         <div class="stat-box">
           <div class="stat-label">Logical Accuracy</div>
           <div class="stat-value"><span id="accVal">28.32</span>%</div>
-          <div class="stat-sub">Gain vs base: <b>+<span id="accGain">22.02</span> pts</b></div>
+          <div class="gain-pill">Gain vs base: +<span id="accGain">22.02</span> pts</div>
         </div>
       </div>
 
-      <div class="takeaway">
-        <b>Key takeaway:</b> CURE-Med shifts performance toward the <b>upper-right</b> —
-        improving both language fidelity and medical reasoning, with gains that grow smoothly with scale.
+      <div class="ood-box" style="margin-top:12px;">
+        <b>Two-line takeaway:</b><br/>
+        CURE-Med improves medical correctness while keeping the final answer in the user’s language.
+        The joint gains become stronger as model size increases.
       </div>
     </div>
 
-    <div class="summary-card">
-      <div style="font-weight:950; font-size:1.05rem;">Highlighted numbers (ours)</div>
+    <!-- OOD quick view (interactive) -->
+    <div class="panel">
+      <h3>OOD transfer: quick view</h3>
+      <div class="sub">
+        A compact snapshot showing generalization beyond CUREMED-BENCH.
+      </div>
 
-      <table class="mini-table" aria-label="Highlighted results table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Consistency ↑</th>
-            <th>Accuracy ↑</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="row-ours">
-            <td><b>CURE-Med-1.5B</b></td>
-            <td><b>57.60</b></td>
-            <td><b>28.32</b></td>
-          </tr>
-          <tr class="row-ours">
-            <td><b>CURE-Med-7B</b></td>
-            <td><b>85.21</b></td>
-            <td><b>54.35</b></td>
-          </tr>
-          <tr class="row-ours">
-            <td><b>CURE-Med-32B</b></td>
-            <td><b>94.96</b></td>
-            <td><b>70.04</b></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="size-row" aria-label="Select OOD snapshot">
+        <button class="size-btn active" data-ood="best32" type="button">Best (32B)</button>
+        <button class="size-btn" data-ood="small15" type="button">Small (1.5B)</button>
+      </div>
 
-      <div style="margin-top:10px; color:var(--muted); font-size:0.92rem;">
-        Mean results across 13 languages (see paper for full tables and per-language results).
+      <div class="ood-box" id="oodText">
+        <b>32B snapshot:</b> Best on <b>CUREMED-BENCH</b> (<b>70.04%</b>) and strong transfer to <b>MMed-Bench</b> (<b>79.57%</b>),
+        while remaining competitive on other medical QA benchmarks.
+      </div>
+
+      <div class="ood-metric" id="oodChips">
+        <div class="ood-chip">CUREMED-BENCH: <span>70.04%</span></div>
+        <div class="ood-chip">MMed-Bench: <span>79.57%</span></div>
+      </div>
+
+      <div class="sub" style="margin-top:10px;">
+        Below: benchmark comparison plot (click to zoom).
       </div>
     </div>
   </div>
 
-  <!-- Full-width Plot 1 -->
+  <!-- Plot: Benchmark comparison (your new image) -->
+  <figure class="figure-wide">
+    <img class="zoomable"
+         src="images/table7_grouped_bar.png"
+         alt="Benchmark comparison: CURE-Med vs medical LLM baselines across benchmarks." />
+    <figcaption>
+      <b>OOD benchmark comparison:</b> CURE-Med remains strong across diverse evaluation settings, and our larger models
+      are competitive with (and often outperform) strong medical-domain LLM baselines on multiple benchmarks.
+      <span class="muted">Click to zoom.</span>
+    </figcaption>
+  </figure>
+
+  <!-- Plot: Trade-off -->
   <figure class="figure-wide">
     <img class="zoomable"
          src="images/bubble_plot_final.png"
          alt="Trade-off bubble plot: CURE-Med shifts toward upper-right compared to baselines." />
     <figcaption>
-      <b>Trade-off plot (Consistency vs. Accuracy):</b>
-      Across model families and scales, CURE-Med moves toward the <b>upper-right</b>, indicating consistent improvements in
-      target-language fidelity and logical medical correctness.
-      <!-- <span class="muted">Click to zoom.</span> -->
+      <b>Trade-off (Consistency vs. Accuracy):</b> CURE-Med consistently moves toward the <b>upper-right</b>,
+      improving both language fidelity and medical reasoning compared to baseline families.
+      <span class="muted">Click to zoom.</span>
     </figcaption>
   </figure>
 
-  <!-- Full-width Plot 2 -->
+  <!-- Plot: Scaling -->
   <figure class="figure-wide">
     <img class="zoomable"
          src="images/scaling_plots_with_shaded_bands.png"
          alt="Scaling plot: CURE-Med vs base across model sizes for consistency and accuracy." />
     <figcaption>
-      <b>Scaling trends (1.5B → 32B):</b>
-      CURE-Med stays above the base model on both language consistency and accuracy, showing stable gains as scale increases
-      and highlighting the effectiveness of curriculum-guided reinforcement learning.
-      <!-- <span class="muted">Click to zoom.</span> -->
+      <b>Scaling (1.5B → 32B):</b> CURE-Med stays above the base model on both metrics, showing stable gains as scale increases
+      and supporting the effectiveness of curriculum-guided reinforcement learning.
+      <span class="muted">Click to zoom.</span>
     </figcaption>
   </figure>
 </section>
 
-<!-- Lightbox (zoom plots) -->
+<!-- Lightbox (zoom) -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <div class="lightbox-inner">
     <img id="lightboxImg" alt="Zoomed plot" />
   </div>
 </div>
+
 
 
 
@@ -1081,7 +1144,7 @@
 
     <script>
   // -----------------------
-  // Interactive Results Data
+  // In-domain interactive data (CUREMED-BENCH)
   // -----------------------
   const resultsData = {
     "1.5B": { ours: { cons: 57.60, acc: 28.32 }, base: { cons: 4.00,  acc: 6.30 } },
@@ -1095,10 +1158,9 @@
   const accVal  = document.getElementById("accVal");
   const consGain = document.getElementById("consGain");
   const accGain  = document.getElementById("accGain");
+  const sizeBtns = Array.from(document.querySelectorAll(".size-btn[data-size]"));
 
-  const btns = Array.from(document.querySelectorAll(".size-btn"));
-
-  function animateNumber(el, from, to, decimals = 2, duration = 420){
+  function animateNumber(el, from, to, decimals = 2, duration = 260){
     const start = performance.now();
     function frame(t){
       const p = Math.min((t - start) / duration, 1);
@@ -1119,13 +1181,48 @@
     animateNumber(consGain, parseFloat(consGain.textContent), gainCons);
     animateNumber(accGain,  parseFloat(accGain.textContent),  gainAcc);
 
-    btns.forEach(b => b.classList.toggle("active", b.dataset.size === size));
+    sizeBtns.forEach(b => b.classList.toggle("active", b.dataset.size === size));
   }
 
-  btns.forEach(b => b.addEventListener("click", () => setSize(b.dataset.size)));
+  sizeBtns.forEach(b => b.addEventListener("click", () => setSize(b.dataset.size)));
 
   // -----------------------
-  // Lightbox for plot zoom
+  // OOD quick view toggle (compact, truthful)
+  // -----------------------
+  const oodBtns = Array.from(document.querySelectorAll(".size-btn[data-ood]"));
+  const oodText = document.getElementById("oodText");
+  const oodChips = document.getElementById("oodChips");
+
+  const oodViews = {
+    best32: {
+      text: `<b>32B snapshot:</b> Best on <b>CUREMED-BENCH</b> (<b>70.04%</b>) and strong transfer to <b>MMed-Bench</b> (<b>79.57%</b>),
+             while remaining competitive on other medical QA benchmarks.`,
+      chips: [
+        `CUREMED-BENCH: <span>70.04%</span>`,
+        `MMed-Bench: <span>79.57%</span>`
+      ]
+    },
+    small15: {
+      text: `<b>1.5B snapshot (OOD example):</b> Even small models show large transfer gains under limited capacity on OOD settings
+             (see paper tables for full breakdown).`,
+      chips: [
+        `Example gain: <span>large jump</span>`,
+        `Low-capacity transfer: <span>supported</span>`
+      ]
+    }
+  };
+
+  function setOOD(key){
+    const v = oodViews[key];
+    oodText.innerHTML = v.text;
+    oodChips.innerHTML = v.chips.map(c => `<div class="ood-chip">${c}</div>`).join("");
+    oodBtns.forEach(b => b.classList.toggle("active", b.dataset.ood === key));
+  }
+
+  oodBtns.forEach(b => b.addEventListener("click", () => setOOD(b.dataset.ood)));
+
+  // -----------------------
+  // Lightbox zoom for figures
   // -----------------------
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
@@ -1146,7 +1243,9 @@
 
   // Init
   setSize("1.5B");
+  setOOD("best32");
 </script>
+
 
 
 </body>
