@@ -440,6 +440,227 @@
     }
 
 
+    /* =========================
+   RESULTS: standout section
+   ========================= */
+
+    /* Full-bleed section that stands out */
+    .results-full{
+      max-width: none !important;
+      margin: 0 !important;
+      border-radius: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 38px 16px !important;
+    
+      background:
+        radial-gradient(1200px 700px at 10% 10%, rgba(45,212,191,0.20), transparent 55%),
+        radial-gradient(1000px 650px at 90% 20%, rgba(96,165,250,0.18), transparent 55%),
+        radial-gradient(900px 650px at 60% 120%, rgba(167,139,250,0.14), transparent 60%),
+        linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+    }
+    
+    .results-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      color: rgba(255,255,255,0.92);
+    }
+    
+    .results-inner h2{
+      margin: 0 0 10px;
+      color: #fff;
+    }
+    
+    .results-kicker{
+      margin: 0 0 16px;
+      color: rgba(226,232,240,0.82);
+    }
+    
+    /* Card style on dark background */
+    .results-card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(226,232,240,0.16);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 14px 40px rgba(2,6,23,0.30);
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Grid layout */
+    .results-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    
+    @media (min-width: 920px){
+      .results-grid{
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: start;
+      }
+    }
+    
+    /* Model size selector */
+    .size-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    
+    .size-btn{
+      border: 1px solid rgba(226,232,240,0.18);
+      background: rgba(226,232,240,0.06);
+      color: rgba(255,255,255,0.92);
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+    }
+    
+    .size-btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(45,212,191,0.35);
+      background: rgba(226,232,240,0.10);
+    }
+    
+    .size-btn.active{
+      border-color: rgba(45,212,191,0.65);
+      background: linear-gradient(135deg, rgba(45,212,191,0.24), rgba(96,165,250,0.18), rgba(167,139,250,0.14));
+    }
+    
+    /* Stats */
+    .stat-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    @media (min-width: 680px){
+      .stat-grid{ grid-template-columns: 1fr 1fr; }
+    }
+    
+    .stat-box{
+      border: 1px solid rgba(226,232,240,0.16);
+      background: rgba(15,23,42,0.35);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    
+    .stat-label{
+      font-weight: 800;
+      color: rgba(226,232,240,0.86);
+      font-size: 0.92rem;
+    }
+    
+    .stat-value{
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-top: 4px;
+      color: #fff;
+    }
+    
+    .stat-sub{
+      margin-top: 4px;
+      color: rgba(226,232,240,0.76);
+      font-size: 0.92rem;
+    }
+    
+    /* Visual cards */
+    .viz-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    
+    .viz-card img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid rgba(226,232,240,0.16);
+      background: rgba(255,255,255,0.03);
+      cursor: zoom-in;
+    }
+    
+    .viz-caption{
+      margin-top: 10px;
+      color: rgba(226,232,240,0.78);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    
+    /* Mini table */
+    .mini-table{
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(226,232,240,0.16);
+    }
+    
+    .mini-table th, .mini-table td{
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(226,232,240,0.10);
+      text-align: left;
+      color: rgba(226,232,240,0.90);
+      font-size: 0.95rem;
+    }
+    
+    .mini-table th{
+      background: rgba(226,232,240,0.06);
+      font-weight: 900;
+    }
+    
+    .mini-table tr:last-child td{ border-bottom: none; }
+    
+    .row-ours{
+      background: linear-gradient(90deg, rgba(45,212,191,0.10), rgba(96,165,250,0.08), rgba(167,139,250,0.06));
+    }
+    
+    .small-note{
+      margin-top: 10px;
+      color: rgba(226,232,240,0.72);
+      font-size: 0.92rem;
+    }
+    
+    /* Lightbox modal for images */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(2,6,23,0.72);
+      z-index: 999;
+      padding: 18px;
+    }
+    
+    .lightbox.open{ display: grid; }
+    
+    .lightbox-inner{
+      max-width: min(1100px, 96vw);
+      max-height: 90vh;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(226,232,240,0.18);
+      background: #0b1220;
+      box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+    }
+    
+    .lightbox-inner img{
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+
+
   </style>
 </head>
 
@@ -755,7 +976,211 @@
 
 
 
+    <section id="results" class="results-full">
+  <div class="results-inner">
+    <h2>Results</h2>
+    <p class="results-kicker">
+      CURE-Med consistently improves <b>language consistency</b> and <b>logical accuracy</b> across model sizes.
+      Use the selector to explore the gains, then inspect the plots.
+    </p>
+
+    <div class="results-grid">
+
+      <!-- LEFT: Interactive summary -->
+      <div class="results-card">
+        <div style="font-weight:900; font-size:1.05rem; margin-bottom:6px;">Results at a glance</div>
+        <div style="color:rgba(226,232,240,0.78);">
+          Pick a model size. We show our performance and how much it improves over the base instruction model.
+        </div>
+
+        <div class="size-row" aria-label="Select model size">
+          <button class="size-btn active" data-size="1.5B" type="button">1.5B</button>
+          <button class="size-btn" data-size="3B" type="button">3B</button>
+          <button class="size-btn" data-size="7B" type="button">7B</button>
+          <button class="size-btn" data-size="14B" type="button">14B</button>
+          <button class="size-btn" data-size="32B" type="button">32B</button>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-box">
+            <div class="stat-label">Language Consistency</div>
+            <div class="stat-value"><span id="consVal">57.60</span>%</div>
+            <div class="stat-sub">Gain vs base: <b>+<span id="consGain">53.60</span> pts</b></div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-label">Logical Accuracy</div>
+            <div class="stat-value"><span id="accVal">28.32</span>%</div>
+            <div class="stat-sub">Gain vs base: <b>+<span id="accGain">22.02</span> pts</b></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; color:rgba(226,232,240,0.80); line-height:1.55;">
+          <b>Key takeaway:</b>
+          CURE-Med shifts performance toward the <b>upper-right</b> (better language fidelity and better medical reasoning),
+          and the advantage grows smoothly with scale.
+        </div>
+
+        <div style="margin-top:14px; font-weight:900;">Highlighted numbers (ours)</div>
+        <table class="mini-table" aria-label="Highlighted results table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Consistency ↑</th>
+              <th>Accuracy ↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-ours">
+              <td><b>CURE-Med-1.5B</b></td>
+              <td><b>57.60</b></td>
+              <td><b>28.32</b></td>
+            </tr>
+            <tr class="row-ours">
+              <td><b>CURE-Med-7B</b></td>
+              <td><b>85.21</b></td>
+              <td><b>54.35</b></td>
+            </tr>
+            <tr class="row-ours">
+              <td><b>CURE-Med-32B</b></td>
+              <td><b>94.96</b></td>
+              <td><b>70.04</b></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="small-note">
+          These are mean results across 13 languages (see paper for full tables and per-language breakdown).
+        </div>
+      </div>
+
+      <!-- RIGHT: Visual summary -->
+      <div class="results-card viz-card">
+        <div style="font-weight:900; font-size:1.05rem; margin-bottom:10px;">Visual summary</div>
+
+        <div class="viz-grid">
+
+          <div>
+            <img class="zoomable"
+                 src="images/bubble_plot_final.png"
+                 alt="Trade-off bubble plot: CURE-Med shifts toward upper-right compared to baselines." />
+            <div class="viz-caption">
+              <b>Trade-off plot:</b> CURE-Med models (stars) consistently move toward the <b>upper-right</b> —
+              improving both language consistency and logical accuracy relative to baseline families.
+            </div>
+          </div>
+
+          <div>
+            <img class="zoomable"
+                 src="images/scaling_plots_with_shaded_bands.png"
+                 alt="Scaling plot: CURE-Med vs base across model sizes for consistency and accuracy." />
+            <div class="viz-caption">
+              <b>Scaling trends:</b> Across model sizes, CURE-Med stays above the base model on both metrics,
+              indicating stable gains and effective curriculum-guided reinforcement learning.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="small-note">
+          Tip: click an image to zoom.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox (for zooming plots) -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner">
+    <img id="lightboxImg" alt="Zoomed plot" />
+  </div>
+</div>
+
+
+
+    <script>
+  // -----------------------
+  // Interactive Results Data
+  // -----------------------
+  const resultsData = {
+    "1.5B": { ours: { cons: 57.60, acc: 28.32 }, base: { cons: 4.00,  acc: 6.30 } },
+    "3B":   { ours: { cons: 74.28, acc: 42.93 }, base: { cons: 10.80, acc: 8.20 } },
+    "7B":   { ours: { cons: 85.21, acc: 54.35 }, base: { cons: 25.40, acc: 29.60 } },
+    "14B":  { ours: { cons: 90.27, acc: 63.74 }, base: { cons: 35.60, acc: 41.80 } },
+    "32B":  { ours: { cons: 94.96, acc: 70.04 }, base: { cons: 41.50, acc: 49.70 } }
+  };
+
+  const consVal = document.getElementById("consVal");
+  const accVal  = document.getElementById("accVal");
+  const consGain = document.getElementById("consGain");
+  const accGain  = document.getElementById("accGain");
+
+  const btns = Array.from(document.querySelectorAll(".size-btn"));
+
+  function animateNumber(el, from, to, decimals = 2, duration = 420){
+    const start = performance.now();
+    function frame(t){
+      const p = Math.min((t - start) / duration, 1);
+      const v = from + (to - from) * (1 - Math.pow(1 - p, 3));
+      el.textContent = v.toFixed(decimals);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function setSize(size){
+    const d = resultsData[size];
+    const gainCons = d.ours.cons - d.base.cons;
+    const gainAcc  = d.ours.acc  - d.base.acc;
+
+    animateNumber(consVal, parseFloat(consVal.textContent), d.ours.cons);
+    animateNumber(accVal,  parseFloat(accVal.textContent),  d.ours.acc);
+    animateNumber(consGain, parseFloat(consGain.textContent), gainCons);
+    animateNumber(accGain,  parseFloat(accGain.textContent),  gainAcc);
+
+    btns.forEach(b => b.classList.toggle("active", b.dataset.size === size));
+  }
+
+  btns.forEach(b => b.addEventListener("click", () => setSize(b.dataset.size)));
+
+  // -----------------------
+  // Lightbox for plot zoom
+  // -----------------------
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+
+  document.querySelectorAll("img.zoomable").forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImg.src = "";
+  });
+
+  // Init
+  setSize("1.5B");
+</script>
+
+
+
+
+
+    
+
+
     
 
 </body>
 </html>
+
+
+
+
