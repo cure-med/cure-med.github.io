@@ -303,6 +303,98 @@
       section{ margin: 14px 10px; padding: 18px; }
       .affils span{ display: block; margin: 4px 0; }
     }
+
+    /* Methods */
+    .methods-intro{
+      margin: 0 0 14px;
+      color: var(--muted);
+    }
+    
+    .method-steps{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    
+    .method-card{
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: 14px;
+      padding: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.92));
+    }
+    
+    .method-head{
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    
+    .step-badge{
+      flex: 0 0 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #07121f;
+      background: linear-gradient(135deg, rgba(45,212,191,0.75), rgba(96,165,250,0.55));
+      border: 1px solid rgba(45,212,191,0.25);
+    }
+    
+    .method-title{
+      margin: 0;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .method-card p{
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+    
+    .pill-row{
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .pill{
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(45,212,191,0.25);
+      background: linear-gradient(180deg, rgba(45,212,191,0.08), rgba(96,165,250,0.05));
+      color: #0f172a;
+    }
+    
+    details.method-details{
+      margin-top: 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.10);
+      background: rgba(255,255,255,0.85);
+      padding: 10px 12px;
+    }
+    
+    details.method-details summary{
+      cursor: pointer;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    
+    details.method-details ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    
+    @media (min-width: 900px){
+      .method-steps{ grid-template-columns: 1fr 1fr; }
+    }
+
   </style>
 </head>
 
@@ -472,7 +564,140 @@
     </div>
   </section>
 
-  <!-- Stop here for now; you'll add Methods/Results/Resources/Citation next. -->
+  <section id="methods">
+  <h2>Method</h2>
+  <p class="methods-intro">
+    Our approach has two parts: (1) building a clinically grounded multilingual benchmark with strong human verification,
+    and (2) training a multilingual medical reasoning model using a stable warm-start + reinforcement learning curriculum.
+    The goal is simple: <b>improve medical correctness</b> while keeping the <b>final answer in the user’s language</b>.
+  </p>
+
+  <div class="method-steps">
+
+    <!-- Step 1 -->
+    <div class="method-card">
+      <div class="method-head">
+        <div class="step-badge">1</div>
+        <div>
+          <p class="method-title"><b>Build CUREMED-BENCH (data + verification)</b></p>
+          <p>
+            We curate multilingual medical content from clinically validated sources and turn it into reasoning questions
+            with a single verifiable final answer. We then run quality checks to keep questions that truly require medical reasoning
+            and remove ambiguous or underspecified items. Finally, native speakers and medical experts verify clinical correctness,
+            language fidelity, and cultural appropriateness.
+          </p>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Clinically grounded sources</span>
+        <span class="pill">Open-ended + verifiable</span>
+        <span class="pill">Human + expert verification</span>
+      </div>
+
+      <details class="method-details">
+        <summary>Details (optional)</summary>
+        <ul>
+          <li>Question creation is followed by filtering for reasoning difficulty and removing multi-answer / ambiguous cases.</li>
+          <li>All items are converted into open-ended prompts so models must reason, not guess from options.</li>
+          <li>Human verification checks: clinical correctness, language fidelity, and artifacts from translation/tooling.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="method-card">
+      <div class="method-head">
+        <div class="step-badge">2</div>
+        <div>
+          <p class="method-title"><b>Cold-start training with code-switching-aware SFT</b></p>
+          <p>
+            Before reinforcement learning, we warm-start the model with supervised fine-tuning on multi-step reasoning traces.
+            During the reasoning steps, the model may use the language that best supports intermediate inference, while the final
+            answer is produced in the target language. This stabilizes reasoning and reduces “language drift” later.
+          </p>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Stable warm-start</span>
+        <span class="pill">Multi-step reasoning</span>
+        <span class="pill">Final answer stays in target language</span>
+      </div>
+
+      <details class="method-details">
+        <summary>Why allow code-switching in the reasoning?</summary>
+        <ul>
+          <li>It helps the model use the most reliable internal “thinking language” for hard medical inference.</li>
+          <li>We still enforce that the final answer is written in the user’s language for safe deployment.</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="method-card">
+      <div class="method-head">
+        <div class="step-badge">3</div>
+        <div>
+          <p class="method-title"><b>Verifier-driven reward (correctness + language + format)</b></p>
+          <p>
+            We train with a reward that encourages three behaviors: (i) medical correctness, (ii) language consistency
+            (the response matches the user’s language), and (iii) adherence to a clean output structure. A separate verifier
+            model checks correctness, which helps reduce bias from “self-judging.”
+          </p>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Medical correctness</span>
+        <span class="pill">Language consistency</span>
+        <span class="pill">Format compliance</span>
+      </div>
+
+      <details class="method-details">
+        <summary>What does the reward look for?</summary>
+        <ul>
+          <li><b>Correctness:</b> does the model reach the clinically correct conclusion?</li>
+          <li><b>Language:</b> is the response written entirely in the query language?</li>
+          <li><b>Format:</b> does it follow the required structured output?</li>
+        </ul>
+      </details>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="method-card">
+      <div class="method-head">
+        <div class="step-badge">4</div>
+        <div>
+          <p class="method-title"><b>GRPO-guided curriculum RL (high → mid → low resource)</b></p>
+          <p>
+            After the warm-start, we use reinforcement learning with a curriculum over languages.
+            We start from higher-resource languages (more stable reward signals) and progressively expand to medium-
+            and low-resource languages. To reduce catastrophic forgetting, each curriculum phase keeps a fraction of data
+            from the previous phase while introducing the next tier.
+          </p>
+        </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Curriculum over languages</span>
+        <span class="pill">Retain past skills</span>
+        <span class="pill">Better low-resource robustness</span>
+      </div>
+
+      <details class="method-details">
+        <summary>What makes the curriculum effective?</summary>
+        <ul>
+          <li>High-resource languages provide more reliable feedback early in RL.</li>
+          <li>We expand training tier-by-tier once improvements plateau.</li>
+          <li>We mix in retained examples from earlier tiers to preserve capabilities.</li>
+        </ul>
+      </details>
+    </div>
+
+  </div>
+</section>
+
 
 </body>
 </html>
