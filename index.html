@@ -914,69 +914,8 @@
 </section>
 
 
-    <script>
-  // ---------------------------
-  // Looping typewriter demo (single example)
-  // ---------------------------
-  const typeEl = document.getElementById("mthType");
-  const toggleBtn = document.getElementById("mthToggle");
 
-  const snippet =
-`<step 1> (EN) Summarize the question and key symptoms.
-<step 2> (EN) Reason through plausible clinical factors step-by-step.
-<step 3> (FR) Vérifier la fidélité à la langue et la cohérence.
-<answer> (FR) Réponse concise en français (recommandation: consulter un professionnel).`;
-
-  let charIdx = 0;
-  let paused = false;
-  let deleting = false;
-
-  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
-
-  async function typeLoop(){
-    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce){
-      typeEl.textContent = snippet;
-      return;
-    }
-
-    while(true){
-      if (paused){ await sleep(120); continue; }
-
-      if (!deleting){
-        typeEl.textContent = snippet.slice(0, charIdx);
-        charIdx++;
-        if (charIdx > snippet.length){
-          deleting = true;
-          await sleep(1400);
-        } else {
-          await sleep(18);
-        }
-      } else {
-        typeEl.textContent = snippet.slice(0, charIdx);
-        charIdx--;
-        if (charIdx < 0){
-          deleting = false;
-          charIdx = 0;
-          await sleep(300);
-        } else {
-          await sleep(10);
-        }
-      }
-    }
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    paused = !paused;
-    toggleBtn.textContent = paused ? "Play" : "Pause";
-  });
-
-  typeLoop();
-</script>
-
-
-
-    <section id="results" class="results-full">
+      <section id="results" class="results-full">
   <div class="results-inner">
     <h2>Results</h2>
     <p class="results-kicker">
@@ -1099,6 +1038,65 @@
 </div>
 
 
+    <script>
+  // ---------------------------
+  // Looping typewriter demo (single example)
+  // ---------------------------
+  const typeEl = document.getElementById("mthType");
+  const toggleBtn = document.getElementById("mthToggle");
+
+  const snippet =
+`<step 1> (EN) Summarize the question and key symptoms.
+<step 2> (EN) Reason through plausible clinical factors step-by-step.
+<step 3> (FR) Vérifier la fidélité à la langue et la cohérence.
+<answer> (FR) Réponse concise en français (recommandation: consulter un professionnel).`;
+
+  let charIdx = 0;
+  let paused = false;
+  let deleting = false;
+
+  function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+  async function typeLoop(){
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce){
+      typeEl.textContent = snippet;
+      return;
+    }
+
+    while(true){
+      if (paused){ await sleep(120); continue; }
+
+      if (!deleting){
+        typeEl.textContent = snippet.slice(0, charIdx);
+        charIdx++;
+        if (charIdx > snippet.length){
+          deleting = true;
+          await sleep(1400);
+        } else {
+          await sleep(18);
+        }
+      } else {
+        typeEl.textContent = snippet.slice(0, charIdx);
+        charIdx--;
+        if (charIdx < 0){
+          deleting = false;
+          charIdx = 0;
+          await sleep(300);
+        } else {
+          await sleep(10);
+        }
+      }
+    }
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    paused = !paused;
+    toggleBtn.textContent = paused ? "Play" : "Pause";
+  });
+
+  typeLoop();
+</script>
 
     <script>
   // -----------------------
@@ -1169,14 +1167,6 @@
   setSize("1.5B");
 </script>
 
-
-
-
-
-    
-
-
-    
 
 </body>
 </html>
