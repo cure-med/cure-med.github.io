@@ -928,8 +928,10 @@
     <h2>Results</h2>
     <p>
       CURE-Med improves <b>language consistency</b> and <b>logical accuracy</b> across model sizes.
-      Select a model size to see our numbers and the <b>gain vs base</b>, then inspect the figures.
+      Beyond CUREMED-BENCH, it also <b>transfers out-of-domain</b> to other multilingual medical benchmarks and
+      <b>outperforms strong medical LLM baselines</b>. Select a model size to view gains vs. the base model, then inspect the figures.
     </p>
+
   </div>
 
   <!-- ONE CARD ONLY -->
@@ -970,11 +972,26 @@
   <!-- PLOTS UNDER IT -->
   <figure class="figure-wide">
     <img class="zoomable"
+         src="images/table7_grouped_bar.png"
+         alt="Benchmark comparison: CURE-Med vs medical LLM baselines across multilingual medical benchmarks." />
+    <figcaption>
+      <b>OOD benchmark transfer:</b> CURE-Med maintains strong performance beyond CUREMED-BENCH across multiple multilingual
+      medical QA benchmarks, matching or outperforming specialized medical LLM baselines—especially at larger scales.
+      <!-- <span class="muted">Click to zoom.</span> -->
+    </figcaption>
+  </figure>
+
+
+
+  
+  <figure class="figure-wide">
+    <img class="zoomable"
          src="images/bubble_plot_final.png"
          alt="Trade-off plot: CURE-Med shifts toward upper-right compared to baselines." />
     <figcaption>
-      <b>Trade-off:</b> CURE-Med moves models toward the <b>upper-right</b>, improving both consistency and accuracy.
-      <span class="muted">Click to zoom.</span>
+      <b>Consistency–accuracy trade-off:</b> Compared to baseline families, CURE-Med shifts performance toward the
+      <b>upper-right</b>, improving medical reasoning while keeping outputs in the user’s language.
+      <!-- <span class="muted">Click to zoom.</span> -->
     </figcaption>
   </figure>
 
@@ -983,9 +1000,11 @@
          src="images/scaling_plots_with_shaded_bands.png"
          alt="Scaling: CURE-Med vs base across sizes for consistency and accuracy." />
     <figcaption>
-      <b>Scaling:</b> Gains remain stable from <b>1.5B → 32B</b>, staying above the base model on both metrics.
-      <span class="muted">Click to zoom.</span>
+      <b>Scaling (1.5B → 32B):</b> CURE-Med stays above the base model on both language consistency and logical accuracy,
+      with gains that remain stable and strengthen with scale.
+      <!-- <span class="muted">Click to zoom.</span> -->
     </figcaption>
+
   </figure>
 </section>
 
