@@ -669,6 +669,104 @@
     }
 
 
+    /* --- Citation --- */
+.cite-wrap{
+  margin-top: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(15,23,42,0.10);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+}
+
+.cite-note{
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.cite-box{
+  margin: 0;
+  padding: 14px;
+  border-radius: 14px;
+  background: #0b1220;
+  color: #e5e7eb;
+  overflow: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.cite-actions{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-copy{
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.12);
+  background: linear-gradient(180deg, rgba(45,212,191,0.16), rgba(96,165,250,0.10));
+  font-weight: 800;
+  cursor: pointer;
+}
+.btn-copy:hover{ filter: brightness(0.98); }
+
+.copy-ok{
+  color: var(--muted);
+  font-weight: 700;
+}
+
+    /* --- Closing banner --- */
+.closing{
+  margin-top: 22px;
+  padding: 54px 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(900px 380px at 50% 35%, rgba(45,212,191,0.18), transparent 60%),
+    radial-gradient(900px 380px at 50% 75%, rgba(96,165,250,0.14), transparent 60%),
+    linear-gradient(180deg, #0b1020 0%, #070a14 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.closing-inner{
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.arxiv-btn{
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 14px;
+  font-weight: 900;
+  text-decoration: none;
+  color: #0b1020;
+  background: linear-gradient(180deg, #ff7a45, #ff5a1f);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.arxiv-btn:hover{ transform: translateY(-1px); }
+
+.closing-quote{
+  margin: 18px auto 8px;
+  max-width: 760px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(229,231,235,0.92);
+}
+
+.closing-foot{
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  color: rgba(229,231,235,0.65);
+}
+
+
+
 
   </style>
 </head>
@@ -1015,6 +1113,46 @@
   </div>
 </div>
 
+    <section id="citation">
+  <h2>Citation</h2>
+
+  <div class="cite-wrap">
+    <p class="cite-note">
+      Citation will be updated after the arXiv submission is live.
+    </p>
+
+<pre class="cite-box"><code id="bibtex">@misc{onyame2026curemed,
+  title         = {CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning},
+  author        = {Onyame, Eric and Ghosh, Akash and Baidya, Subhadip and Saha, Sriparna and Chen, Xiuying and Agarwal, Chirag},
+  year          = {2026},
+  note          = {arXiv preprint, link to be added}
+}</code></pre>
+
+
+    <div class="cite-actions">
+      <button class="btn-copy" type="button" onclick="copyBibtex()">Copy BibTeX</button>
+      <span class="copy-ok" id="copyOk" aria-live="polite"></span>
+    </div>
+  </div>
+</section>
+
+<section id="final" class="closing">
+  <div class="closing-inner">
+    <a class="arxiv-btn" href="#" target="_blank" rel="noopener" aria-label="Open arXiv paper (placeholder)">
+      arXiv Paper
+    </a>
+
+    <p class="closing-quote">
+      Built with curiosity — scaling trustworthy medical reasoning across <b>diverse languages</b>, for the benefit of all.
+    </p>
+
+    <p class="closing-foot">
+      © <span id="yearNow"></span> · CURE-Med · More updates soon
+    </p>
+  </div>
+</section>
+
+
 
 
 
@@ -1142,6 +1280,25 @@
   // Init
   setSize("1.5B");
 </script>
+
+    <script>
+  function copyBibtex(){
+    const el = document.getElementById("bibtex");
+    const txt = el ? el.textContent : "";
+    navigator.clipboard.writeText(txt).then(() => {
+      const ok = document.getElementById("copyOk");
+      if(ok){
+        ok.textContent = "Copied!";
+        setTimeout(() => ok.textContent = "", 1200);
+      }
+    });
+  }
+
+  // year in footer
+  const y = document.getElementById("yearNow");
+  if(y) y.textContent = new Date().getFullYear();
+</script>
+
 
 
 
