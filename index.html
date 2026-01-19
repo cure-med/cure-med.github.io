@@ -305,126 +305,84 @@
     }
 
     /* =========================
-   Interactive Methods (compact)
+   Methods: 2x2 Cards + full-width demo
    ========================= */
 
-    .method-wrap{
+    .method-grid{
       display: grid;
       grid-template-columns: 1fr;
       gap: 14px;
-      margin-top: 10px;
+      margin-top: 12px;
     }
     
-    .method-stepper{
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    @media (min-width: 900px){
+      .method-grid{
+        grid-template-columns: 1fr 1fr; /* 2 left, 2 right */
+        gap: 16px;
+      }
     }
     
-    .mth-tab{
-      appearance: none;
+    .method-card2{
       border: 1px solid rgba(15,23,42,0.10);
-      background: rgba(255,255,255,0.75);
-      padding: 10px 12px;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 800;
-      color: #0f172a;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      border-radius: 16px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.92));
+      box-shadow: 0 10px 28px rgba(2,6,23,0.06);
+      transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
     }
     
-    .mth-tab:hover{
-      transform: translateY(-1px);
+    .method-card2:hover{
+      transform: translateY(-2px);
       border-color: rgba(45,212,191,0.35);
-      background: linear-gradient(180deg, rgba(45,212,191,0.08), rgba(96,165,250,0.04));
+      box-shadow: 0 14px 36px rgba(2,6,23,0.10);
     }
     
-    .mth-tab .num{
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
+    .method-card2 .toprow{
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    
+    .method-card2 .num{
+      flex: 0 0 36px;
+      height: 36px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
       font-weight: 900;
       color: #07121f;
-      background: linear-gradient(135deg, rgba(45,212,191,0.75), rgba(96,165,250,0.55));
+      background: linear-gradient(135deg, rgba(45,212,191,0.80), rgba(96,165,250,0.55));
       border: 1px solid rgba(45,212,191,0.25);
     }
     
-    .mth-tab.active{
-      border-color: rgba(45,212,191,0.55);
-      background: linear-gradient(180deg, rgba(45,212,191,0.14), rgba(96,165,250,0.06));
-    }
-    
-    .mth-panel{
-      border: 1px solid rgba(15,23,42,0.10);
-      border-radius: 14px;
-      padding: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.92));
-    }
-    
-    .mth-panel h3{
-      margin: 0 0 6px;
-      letter-spacing: -0.01em;
-      font-size: 1.05rem;
-    }
-    
-    .mth-panel p{
-      margin: 0 0 10px;
-      color: var(--muted);
-    }
-    
-    .mth-bullets{
+    .method-card2 h3{
       margin: 0;
-      padding-left: 18px;
+      font-size: 1.08rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .method-card2 p{
+      margin: 8px 0 0;
       color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
     }
     
-    .mth-bullets li{
-      margin: 6px 0;
+    /* Demo spans both columns */
+    .method-demo-wide{
+      grid-column: 1 / -1; /* span all columns */
     }
     
-    .mth-pills{
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    
-    .mth-pill{
-      font-size: 0.85rem;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(45,212,191,0.25);
-      background: linear-gradient(180deg, rgba(45,212,191,0.08), rgba(96,165,250,0.05));
-      color: #0f172a;
-    }
-    
-    .mth-details{
-      margin-top: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(15,23,42,0.10);
-      background: rgba(255,255,255,0.82);
-      padding: 10px 12px;
-    }
-    
-    .mth-details summary{
-      cursor: pointer;
-      font-weight: 900;
-    }
-    
+    /* Demo styling */
     .mth-demo{
-      margin-top: 14px;
-      border-radius: 14px;
+      border-radius: 16px;
       border: 1px solid rgba(15,23,42,0.10);
       background: #0b1220;
       color: #e2e8f0;
-      padding: 14px;
+      padding: 16px;
       overflow: hidden;
+      box-shadow: 0 12px 34px rgba(2,6,23,0.18);
     }
     
     .mth-demo-top{
@@ -460,8 +418,8 @@
     
     .mth-code{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.92rem;
-      line-height: 1.55;
+      font-size: 0.95rem;
+      line-height: 1.6;
       white-space: pre-wrap;
       margin: 0;
     }
@@ -474,13 +432,6 @@
     
     @keyframes blink{
       50% { opacity: 0; }
-    }
-    
-    @media (min-width: 900px){
-      .method-wrap{
-        grid-template-columns: 1fr 1.2fr;
-        align-items: start;
-      }
     }
     
     /* Respect reduced motion */
@@ -661,59 +612,74 @@
   <section id="methods">
   <h2>Method</h2>
   <p class="methods-intro">
-    Click through the pipeline. Each step is intentionally short — details are optional.
+    CURE-Med combines a clinically grounded benchmark with curriculum-guided reinforcement learning to improve medical correctness
+    while keeping the final answer in the user’s language.
   </p>
 
-  <div class="method-wrap">
+  <div class="method-grid">
 
-    <!-- Left: stepper -->
-    <div class="method-stepper" role="tablist" aria-label="Method steps">
-      <button class="mth-tab active" type="button" data-step="0" role="tab" aria-selected="true">
-        <span class="num">1</span> Data & Verification
-      </button>
-      <button class="mth-tab" type="button" data-step="1" role="tab" aria-selected="false">
-        <span class="num">2</span> Warm-start SFT
-      </button>
-      <button class="mth-tab" type="button" data-step="2" role="tab" aria-selected="false">
-        <span class="num">3</span> Reward Design
-      </button>
-      <button class="mth-tab" type="button" data-step="3" role="tab" aria-selected="false">
-        <span class="num">4</span> Curriculum RL
-      </button>
+    <!-- Card 1 -->
+    <div class="method-card2">
+      <div class="toprow">
+        <div class="num">1</div>
+        <div>
+          <h3>Data Collection & Human Verification</h3>
+          <p>
+            We construct <b>CUREMED-BENCH</b> from clinically validated sources and generate multilingual medical reasoning queries.
+            Native speakers and medical experts verify <b>clinical correctness</b> and <b>language consistency</b> across all languages.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- Right: panel -->
-    <div class="mth-panel" role="tabpanel" aria-live="polite">
-      <h3 id="mthTitle">Build CUREMED-BENCH (data + verification)</h3>
-      <p id="mthOneLiner">
-        Curate clinically grounded multilingual questions and verify them with native speakers and medical experts.
-      </p>
-
-      <ul class="mth-bullets" id="mthBullets">
-        <li>Open-ended questions with a single verifiable answer</li>
-        <li>Filter ambiguous / underspecified items</li>
-        <li>Human verification for clinical and linguistic fidelity</li>
-      </ul>
-
-      <div class="mth-pills" id="mthPills">
-        <span class="mth-pill">Clinically grounded</span>
-        <span class="mth-pill">Verifiable</span>
-        <span class="mth-pill">Human review</span>
-      </div>
-
-      <details class="mth-details">
-        <summary>Details (optional)</summary>
-        <div id="mthDetailsText" class="muted" style="margin-top:8px;">
-          We generate multilingual items from clinically validated sources, keep only reasoning-heavy questions,
-          and run expert/native-speaker verification to remove translation artifacts and ensure correctness.
+    <!-- Card 2 -->
+    <div class="method-card2">
+      <div class="toprow">
+        <div class="num">2</div>
+        <div>
+          <h3>Supervised Fine-Tuning (Warm-start)</h3>
+          <p>
+            We warm-start the model with supervised fine-tuning on a <b>code-switched reasoning dataset</b> across the 13 languages.
+            This stabilizes multi-step reasoning before reinforcement learning.
+          </p>
         </div>
-      </details>
+      </div>
+    </div>
 
-      <!-- Live demo -->
-      <div class="mth-demo" aria-label="Live code-switching demo">
+    <!-- Card 3 -->
+    <div class="method-card2">
+      <div class="toprow">
+        <div class="num">3</div>
+        <div>
+          <h3>Reward Design</h3>
+          <p>
+            We use a verifier-driven reward that encourages <b>correct clinical conclusions</b> while enforcing
+            <b>target-language fidelity</b> and a clean, structured response format.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="method-card2">
+      <div class="toprow">
+        <div class="num">4</div>
+        <div>
+          <h3>GRPO-Guided Curriculum Learning</h3>
+          <p>
+            After warm-starting, we apply GRPO with a <b>language-resource curriculum</b>, training progressively from higher-resource
+            to lower-resource languages while retaining prior skills to reduce forgetting.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width Demo -->
+    <div class="method-demo-wide">
+      <div class="mth-demo" aria-label="Live code-switching reasoning demo">
         <div class="mth-demo-top">
           <div>
-            <div class="mth-demo-title">Live demo: code-switching reasoning → target-language answer</div>
+            <div class="mth-demo-title">Live demo: code-switching reasoning</div>
             <small>Illustrative example (not medical advice). Loops automatically.</small>
           </div>
           <button type="button" id="mthToggle">Pause</button>
@@ -729,103 +695,17 @@
 
     <script>
   // ---------------------------
-  // 1) Interactive method steps
-  // ---------------------------
-  const steps = [
-    {
-      title: "Build CUREMED-BENCH (data + verification)",
-      oneLiner: "Curate clinically grounded multilingual questions and verify them with native speakers and medical experts.",
-      bullets: [
-        "Open-ended questions with a single verifiable answer",
-        "Filter ambiguous / underspecified items",
-        "Human verification for clinical + language fidelity"
-      ],
-      pills: ["Clinically grounded", "Verifiable", "Human review"],
-      details: "We generate multilingual items from clinically validated sources, keep only reasoning-heavy questions, and run expert/native-speaker verification to remove artifacts and ensure correctness."
-    },
-    {
-      title: "Cold-start training with code-switching-aware SFT",
-      oneLiner: "Warm-start reasoning with supervised traces; allow mixed-language intermediate steps while keeping the final answer in the user’s language.",
-      bullets: [
-        "Stabilizes multi-step reasoning before RL",
-        "Intermediate reasoning can code-switch",
-        "Final answer stays in the target language"
-      ],
-      pills: ["Warm-start", "Multi-step", "Target-language answer"],
-      details: "This makes RL more stable: the model can use the most reliable 'thinking language' in intermediate steps, but we enforce that the final answer remains in the user’s language."
-    },
-    {
-      title: "Verifier-driven reward (correctness + language + format)",
-      oneLiner: "Use a reward that jointly pushes correct clinical conclusions, language consistency, and clean structure.",
-      bullets: [
-        "Correctness via a verifier model",
-        "Language consistency (match the query language)",
-        "Format compliance for reliable outputs"
-      ],
-      pills: ["Correctness", "Language fidelity", "Output format"],
-      details: "A separate verifier checks correctness to reduce bias from self-judging, while language and format checks keep outputs safe and consistent."
-    },
-    {
-      title: "GRPO-guided curriculum RL (high → mid → low resource)",
-      oneLiner: "Train progressively across language-resource tiers and retain prior skills by mixing data from earlier phases.",
-      bullets: [
-        "Start where reward signals are most stable",
-        "Expand to medium and low-resource languages",
-        "Mix retained samples to reduce forgetting"
-      ],
-      pills: ["Curriculum", "Retention", "Low-resource robustness"],
-      details: "We advance tier-by-tier once improvements plateau, and keep a fraction of earlier data to preserve capabilities while transferring to low-resource languages."
-    }
-  ];
-
-  const tabEls = Array.from(document.querySelectorAll(".mth-tab"));
-  const mthTitle = document.getElementById("mthTitle");
-  const mthOne = document.getElementById("mthOneLiner");
-  const mthBullets = document.getElementById("mthBullets");
-  const mthPills = document.getElementById("mthPills");
-  const mthDetailsText = document.getElementById("mthDetailsText");
-
-  function setStep(i){
-    tabEls.forEach((b, idx) => {
-      const active = idx === i;
-      b.classList.toggle("active", active);
-      b.setAttribute("aria-selected", active ? "true" : "false");
-    });
-
-    const s = steps[i];
-    mthTitle.textContent = s.title;
-    mthOne.textContent = s.oneLiner;
-
-    mthBullets.innerHTML = s.bullets.map(x => `<li>${x}</li>`).join("");
-    mthPills.innerHTML = s.pills.map(x => `<span class="mth-pill">${x}</span>`).join("");
-    mthDetailsText.textContent = s.details;
-  }
-
-  tabEls.forEach(btn => {
-    btn.addEventListener("click", () => setStep(parseInt(btn.dataset.step, 10)));
-  });
-
-  // ---------------------------
-  // 2) Looping typewriter demo
+  // Looping typewriter demo (single example)
   // ---------------------------
   const typeEl = document.getElementById("mthType");
   const toggleBtn = document.getElementById("mthToggle");
 
-  // Keep it illustrative + safe (no real diagnosis)
-  const snippets = [
-`<step 1> (EN) Summarize the user question clearly.
-<step 2> (EN) Reason through key facts step-by-step.
-<step 3> (FR) Vérifier la cohérence linguistique.
-<answer> (FR) Réponse concise en français + recommandation: consulter un professionnel.`,
-`<step 1> (FR) Identifier les informations importantes.
-<step 2> (EN) Compare options and check consistency.
-<answer> (FR) Réponse finale uniquement en français.`,
-`<step 1> (EN→FR) Controlled code-switching during reasoning.
-<step 2> (FR) Sortie structurée et fidèle à la langue.
-<answer> (FR) Réponse finale dans la langue de l’utilisateur.`
-  ];
+  const snippet =
+`<step 1> (EN) Summarize the question and key symptoms.
+<step 2> (EN) Reason through plausible clinical factors step-by-step.
+<step 3> (FR) Vérifier la fidélité à la langue et la cohérence.
+<answer> (FR) Réponse concise en français (recommandation: consulter un professionnel).`;
 
-  let snippetIdx = 0;
   let charIdx = 0;
   let paused = false;
   let deleting = false;
@@ -833,42 +713,33 @@
   function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
   async function typeLoop(){
-    // If user prefers reduced motion, show static text
     const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce){
-      typeEl.textContent = snippets[0];
+      typeEl.textContent = snippet;
       return;
     }
 
     while(true){
       if (paused){ await sleep(120); continue; }
 
-      const current = snippets[snippetIdx];
-
-      // Type forward
       if (!deleting){
-        typeEl.textContent = current.slice(0, charIdx);
+        typeEl.textContent = snippet.slice(0, charIdx);
         charIdx++;
-
-        if (charIdx > current.length){
+        if (charIdx > snippet.length){
           deleting = true;
-          await sleep(1200); // pause at end
+          await sleep(1400);
         } else {
-          await sleep(18); // typing speed
+          await sleep(18);
         }
-      }
-      // Delete
-      else{
-        typeEl.textContent = current.slice(0, charIdx);
+      } else {
+        typeEl.textContent = snippet.slice(0, charIdx);
         charIdx--;
-
         if (charIdx < 0){
           deleting = false;
-          snippetIdx = (snippetIdx + 1) % snippets.length;
           charIdx = 0;
-          await sleep(250);
+          await sleep(300);
         } else {
-          await sleep(10); // delete speed
+          await sleep(10);
         }
       }
     }
@@ -879,8 +750,6 @@
     toggleBtn.textContent = paused ? "Play" : "Pause";
   });
 
-  // Start
-  setStep(0);
   typeLoop();
 </script>
 
