@@ -7,13 +7,12 @@
 
   <style>
     :root{
-      --bg: #0b1220;
       --card: rgba(255,255,255,0.95);
       --text: #0f172a;
       --muted: #475569;
       --border: rgba(15, 23, 42, 0.10);
 
-      /* Accent palette (clean + “medical/academic”) */
+      /* Accent palette */
       --accent: #2dd4bf;     /* teal */
       --accent2: #60a5fa;    /* blue */
       --accent3: #a78bfa;    /* violet */
@@ -24,16 +23,17 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
+
+    body{
       margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color: var(--text);
       background: #f6f8fb;
       line-height: 1.6;
     }
 
     /* ---------- Hero ---------- */
-    header.hero {
+    header.hero{
       position: relative;
       overflow: hidden;
       padding: 56px 20px 26px;
@@ -42,59 +42,57 @@
         radial-gradient(900px 500px at 85% 20%, rgba(96,165,250,0.22), transparent 55%),
         radial-gradient(900px 600px at 60% 110%, rgba(167,139,250,0.18), transparent 60%),
         linear-gradient(180deg, #0b1220 0%, #0b1220 55%, #0f172a 100%);
-      color: white;
-    }
-
-    .hero-inner {
-      max-width: 980px;
-      margin: 0 auto;
+      color: #fff;
       text-align: center;
     }
 
-    .hero h1 {
+    .hero-inner{
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .hero h1{
       margin: 0 0 14px;
       font-size: clamp(1.55rem, 3vw, 2.35rem);
       line-height: 1.2;
       letter-spacing: -0.02em;
     }
 
-    .hero .subtitle {
+    .hero .subtitle{
       margin: 0 auto 18px;
-      max-width: 900px;
+      max-width: 920px;
       color: rgba(255,255,255,0.82);
       font-size: 1.02rem;
     }
 
-    /* Authors + affiliations */
-    .authors {
+    .authors{
       margin: 14px auto 6px;
       max-width: 980px;
       color: rgba(255,255,255,0.92);
       font-size: 0.98rem;
     }
-    .authors a { color: rgba(255,255,255,0.92); text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,0.35); }
-    .authors a:hover { border-bottom-color: rgba(255,255,255,0.75); }
 
-    .affils {
+    .affils{
       margin: 8px auto 0;
       max-width: 980px;
       color: rgba(255,255,255,0.80);
       font-size: 0.95rem;
     }
-    .affils span {
+
+    .affils span{
       display: inline-block;
       margin: 2px 10px;
       white-space: nowrap;
     }
 
-    .notes {
+    .notes{
       margin-top: 8px;
       color: rgba(255,255,255,0.75);
       font-size: 0.92rem;
     }
 
-    /* Buttons */
-    .btn-row {
+    /* ---------- Buttons + icons ---------- */
+    .btn-row{
       margin-top: 18px;
       display: flex;
       flex-wrap: wrap;
@@ -102,46 +100,50 @@
       justify-content: center;
     }
 
-    .btn {
+    .btn{
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       padding: 10px 14px;
       border-radius: 999px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.08);
-      color: white;
+      color: #fff;
       transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
       backdrop-filter: blur(10px);
     }
-    .btn:hover {
+
+    .btn:hover{
       transform: translateY(-1px);
       background: rgba(255,255,255,0.12);
       border-color: rgba(255,255,255,0.28);
     }
 
-    .btn.primary {
+    .btn.primary{
       border: none;
       background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 55%, var(--accent3) 100%);
       color: #07121f;
     }
-    .btn.primary:hover { transform: translateY(-1px); }
 
-    /* Paper placeholder looks intentional */
-    .btn.disabled {
+    .btn.disabled{
       pointer-events: none;
-      opacity: 0.75;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.85);
+      opacity: 0.8;
+    }
+
+    .icon{
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+      fill: currentColor;
     }
 
     /* ---------- Nav ---------- */
-    nav.topnav {
+    nav.topnav{
       position: sticky;
       top: 0;
       z-index: 50;
@@ -149,28 +151,31 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(15,23,42,0.08);
     }
-    .nav-inner {
+
+    .nav-inner{
       max-width: 980px;
       margin: 0 auto;
       padding: 10px 14px;
       display: flex;
-      gap: 14px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
     }
-    nav a {
+
+    nav a{
       text-decoration: none;
       color: #0f172a;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       padding: 6px 10px;
       border-radius: 10px;
       transition: background 120ms ease;
     }
-    nav a:hover { background: rgba(15,23,42,0.06); }
+
+    nav a:hover{ background: rgba(15,23,42,0.06); }
 
     /* ---------- Sections ---------- */
-    section {
+    section{
       max-width: 980px;
       margin: 20px auto;
       padding: 22px;
@@ -179,12 +184,16 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
     }
-    section h2 {
+
+    section h2{
       margin: 0 0 10px;
       letter-spacing: -0.01em;
     }
 
-    .abstract-box {
+    .muted{ color: var(--muted); }
+
+    /* Abstract block */
+    .abstract-box{
       position: relative;
       padding: 16px 16px 16px 18px;
       border-radius: 14px;
@@ -192,7 +201,8 @@
       border: 1px solid rgba(45,212,191,0.22);
       color: #0f172a;
     }
-    .abstract-box:before {
+
+    .abstract-box:before{
       content: "";
       position: absolute;
       left: 0;
@@ -203,16 +213,102 @@
       background: linear-gradient(180deg, var(--accent), var(--accent2));
     }
 
-    .muted { color: var(--muted); }
+    /* Teaser / figure block */
+    .figure-card{
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(15,23,42,0.10);
+    }
 
-    @media (max-width: 520px) {
-      .affils span { display: block; margin: 4px 0; }
-      section { margin: 14px 10px; padding: 18px; }
+    .figure-card img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid rgba(15,23,42,0.10);
+      background: #fff;
+    }
+
+    .figure-card figcaption{
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .badges{
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .badge{
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(45,212,191,0.25);
+      background: linear-gradient(180deg, rgba(45,212,191,0.10), rgba(96,165,250,0.06));
+      color: #0f172a;
+    }
+
+    /* Contributions */
+    .contrib-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .contrib-item{
+      display: flex;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(15,23,42,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.92));
+    }
+
+    .contrib-icon{
+      flex: 0 0 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: #07121f;
+      background: linear-gradient(135deg, rgba(45,212,191,0.75), rgba(96,165,250,0.55));
+      border: 1px solid rgba(45,212,191,0.25);
+    }
+
+    .contrib-item b{
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .contrib-item p{
+      margin: 0;
+      color: var(--muted);
+    }
+
+    @media (min-width: 820px){
+      .contrib-grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px){
+      section{ margin: 14px 10px; padding: 18px; }
+      .affils span{ display: block; margin: 4px 0; }
     }
   </style>
 </head>
 
 <body>
+
+  <!-- ---------- HERO ---------- -->
   <header class="hero">
     <div class="hero-inner">
       <h1>CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning</h1>
@@ -235,28 +331,47 @@
       <div class="notes"><sup>*</sup>Equal contribution</div>
 
       <div class="btn-row">
-        <!-- Placeholder: update href later to the arXiv link -->
+        <!-- Paper placeholder: update later to arXiv link -->
         <a class="btn primary disabled" href="#" aria-disabled="true" title="Update with arXiv link after submission">
+          <!-- Document icon -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2.5L19.5 10H14V4.5zM7 13h10v2H7v-2zm0 4h10v2H7v-2zM7 9h5v2H7V9z"/>
+          </svg>
           Paper (arXiv soon)
         </a>
 
         <a class="btn" href="https://github.com/AikyamLab/cure-med" target="_blank" rel="noopener">
-          Code (GitHub)
+          <!-- GitHub icon -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.35-1.16-3.35-1.16-.45-1.14-1.1-1.44-1.1-1.44-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.21-.25-4.54-1.1-4.54-4.9 0-1.08.39-1.96 1.03-2.65-.1-.26-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.5 9.5 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.9-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.38.1 2.64.64.69 1.03 1.57 1.03 2.65 0 3.81-2.33 4.65-4.55 4.9.36.31.68.92.68 1.86v2.76c0 .26.18.57.69.48A10 10 0 0 0 12 2z"/>
+          </svg>
+          Code
         </a>
 
         <a class="btn" href="https://huggingface.co/datasets/Aikyam-Lab/CUREMED-BENCH" target="_blank" rel="noopener">
-          Dataset (Hugging Face)
+          <!-- Hugging Face-ish smile icon (simple + clean) -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm-3.2 8.2a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zm6.4 0a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zM7.5 13.4a.9.9 0 0 1 1.23.33c.62 1.07 1.86 1.77 3.27 1.77s2.65-.7 3.27-1.77a.9.9 0 1 1 1.56.9C16.93 16.3 14.99 17.4 12 17.4s-4.93-1.1-5.73-2.83a.9.9 0 0 1 .33-1.17z"/>
+          </svg>
+          Dataset
         </a>
 
-        <!-- Optional: keep if you will add citation section later -->
-        <a class="btn" href="#citation">BibTeX</a>
+        <a class="btn" href="#citation">
+          <!-- Quote icon -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.2 17h3.2V9H6v6.8c0 .66.54 1.2 1.2 1.2zm10.8 0h3.2V9H16.8v6.8c0 .66.54 1.2 1.2 1.2z"/>
+          </svg>
+          BibTeX
+        </a>
       </div>
     </div>
   </header>
 
+  <!-- ---------- NAV ---------- -->
   <nav class="topnav">
     <div class="nav-inner">
       <a href="#abstract">Abstract</a>
+      <a href="#teaser">Overview</a>
       <a href="#contributions">Contributions</a>
       <a href="#methods">Methods</a>
       <a href="#results">Results</a>
@@ -265,6 +380,7 @@
     </div>
   </nav>
 
+  <!-- ---------- ABSTRACT ---------- -->
   <section id="abstract">
     <h2>Abstract</h2>
     <div class="abstract-box">
@@ -278,54 +394,85 @@
       languages, our approach consistently outperforms strong baselines and scales effectively, achieving 85.21% language
       consistency and 54.35% logical correctness at 7B parameters, and 94.96% language consistency and 70.04% logical
       correctness at 32B parameters. These results support reliable and equitable multilingual medical reasoning in LLMs.
-      <span class="muted">Paper link will be updated after arXiv submission.</span>
+      <span class="muted"><b>Paper:</b> arXiv link coming soon (will update after submission).</span>
     </div>
   </section>
 
+  <!-- ---------- OVERVIEW FIGURE ---------- -->
+  <section id="teaser">
+    <h2>Overview</h2>
 
-    <!-- <section id="contributions">
-        <h2>Contributions</h2>
-        <ul>
-            <li>We present a systematic evaluation of multilingual medical reasoning of LLMs using verifiable medical queries, enabling reliable measurement of logical accuracy and language consistency across languages.</li>
-            <li>We introduce CUREMED-BENCH, a large-scale multilingual medical reasoning dataset spanning 13 languages across high-, mid-, and low-resource settings.</li>
-            <li>We propose CURE-MED, a two-stage training framework for multilingual medical reasoning that combines code-switching-aware SFT with curriculum-informed reinforcement learning (RL) to jointly optimize logical correctness and linguistic fidelity.</li>
-            <li>Through extensive automatic and human evaluations, we show that CURE-MED achieves state-of-the-art performance on CUREMED-BENCH and demonstrates improved out-of-distribution generalization, including improved robustness in low-resource languages and stronger performance on unseen medical questions and languages.</li>
-        </ul>
-    </section>
+    <figure class="figure-card">
+      <img src="images/cure_med.png"
+           alt="CURE-Med pipeline: Stage 0 curation, Stage 1 supervised fine-tuning, Stage 2 GRPO-guided curriculum learning." />
 
-    <section id="methods">
-        <h2>Methods</h2>
-        <p>CURE-MED applies code-switching-aware supervised fine-tuning (SFT) to stabilize language usage during intermediate reasoning steps and performs curriculum-informed GRPO to improve logical correctness and language fidelity. The framework uses the Qwen2.5-Instruct backbone and focuses on transfer from high-resource to low-resource languages for equitable performance.</p>
-    </section>
+      <div class="badges" aria-label="Key highlights">
+        <span class="badge">13 languages</span>
+        <span class="badge">Code-switching-aware SFT</span>
+        <span class="badge">GRPO curriculum RL</span>
+        <span class="badge">Medical reasoning</span>
+      </div>
 
-    <section id="results">
-        <h2>Results</h2>
-        <p>Our approach outperforms baselines across 13 languages, with key metrics including 85.21% language consistency and 54.35% logical correctness at 7B parameters. At 32B, it reaches 94.96% consistency and 70.04% correctness. Improved generalization in low-resource settings (e.g., Amharic, Swahili) demonstrates robustness for real-world clinical use.</p>
-    </section>
+      <figcaption>
+        <b>Figure 1:</b> CURE-Med training pipeline—curation of clinically validated multilingual data,
+        supervised fine-tuning on code-switched reasoning traces, and GRPO-guided curriculum learning
+        from high- to low-resource languages.
+      </figcaption>
+    </figure>
+  </section>
 
-    <section id="resources">
-        <h2>Resources</h2>
-        <ul>
-            <li><a href="cure-med-paper.pdf">Full Paper (PDF)</a> (arXiv link coming soon)</li>
-            <li><a href="data.zip">CUREMED-BENCH Dataset (ZIP)</a></li>
-            <li>Code: Coming soon upon acceptance (link to AikyamaLab repo if public).</li>
-        </ul>
-    </section>
+  <!-- ---------- CONTRIBUTIONS ---------- -->
+  <section id="contributions">
+    <h2>Key Contributions</h2>
 
-    <section id="citation">
-        <h2>Citation</h2>
-        <pre>
-@article{onyame2026curemed,
-  title={CURE-Med: Curriculum-Informed Reinforcement Learning for Multilingual Medical Reasoning},
-  author={Onyame, Eric and Ghosh, Akash and Baidya, Subhadip and Saha, Sriparna and Chen, Xiuying and Agarwal, Chirag},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2026}
-}
-        </pre>
-    </section>
+    <div class="contrib-grid">
+      <div class="contrib-item">
+        <div class="contrib-icon">1</div>
+        <div>
+          <b>Systematic multilingual medical reasoning evaluation</b>
+          <p>
+            We evaluate multilingual medical reasoning using verifiable open-ended queries, measuring both logical correctness
+            and language consistency across languages.
+          </p>
+        </div>
+      </div>
 
-    <footer>
-        <p>&copy; 2026 CURE-Med Team | Hosted on GitHub Pages | Contact: eon4a@virginia.edu</p>
-    </footer>
+      <div class="contrib-item">
+        <div class="contrib-icon">2</div>
+        <div>
+          <b>CUREMED-BENCH dataset (13 languages)</b>
+          <p>
+            A large-scale benchmark spanning high-, mid-, and low-resource settings, including underrepresented languages such
+            as Amharic, Yoruba, and Swahili.
+          </p>
+        </div>
+      </div>
+
+      <div class="contrib-item">
+        <div class="contrib-icon">3</div>
+        <div>
+          <b>CURE-Med training: code-switching-aware SFT + GRPO curriculum RL</b>
+          <p>
+            A two-stage training framework that jointly improves reasoning correctness and linguistic fidelity, with curriculum
+            progression from high- to low-resource languages.
+          </p>
+        </div>
+      </div>
+
+      <div class="contrib-item">
+        <div class="contrib-icon">4</div>
+        <div>
+          <b>Strong performance and robustness</b>
+          <p>
+            Extensive automatic and human evaluation shows consistent gains over strong baselines and improved generalization,
+            including in low-resource settings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stop here for now; you'll add Methods/Results/Resources/Citation next. -->
+
 </body>
-</html> -->
+</html>
